@@ -1,5 +1,5 @@
 use colored::*;
-use crate::collaborative_filtering::person::Person;
+use crate::person::person::Person;
 use cli_table::{format::Justify, print_stdout, Cell, CellStruct, Style, Table};
 
 pub struct Logger {

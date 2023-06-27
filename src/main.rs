@@ -2,6 +2,7 @@ mod collaborative_filtering;
 mod object;
 mod logger;
 mod test;
+mod person;
 
 use crate::logger::logger::Logger;
 

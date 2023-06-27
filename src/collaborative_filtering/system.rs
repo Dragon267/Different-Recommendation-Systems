@@ -1,4 +1,8 @@
-use crate::{collaborative_filtering::person::Person, logger::logger::Logger};
+use crate::{
+    person::person::Person,
+    logger::logger::Logger
+};
+
 use std::collections::HashMap;
 use crate::object::object::Object;
 

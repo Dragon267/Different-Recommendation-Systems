@@ -1,4 +1,4 @@
-use crate::collaborative_filtering::person::Person;
+use crate::person::person::Person;
 use crate::collaborative_filtering::system::System;
 use crate::object::object::Object;
 use crate::logger::logger::Logger;
