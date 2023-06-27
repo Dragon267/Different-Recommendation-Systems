@@ -36,7 +36,7 @@ impl System {
     }
 
     pub fn slow_recommend(&mut self, person_id: u64, feed: i32) -> Vec<u64> {
-        // Time Complexity: 
+        // Time Complexity: O(n + n log n + n^2 + n log n) ~= O(n^2 + n log n)
         let mut people: Vec<(usize, u64)> = vec![];
         for id in 0..self.people.len() {
             if id == person_id as usize { continue; }
