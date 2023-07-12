@@ -12,35 +12,43 @@ pub fn abs(n: i32) -> i32 {
 #[derive(Clone)]
 
 pub struct Person {
-    pub taste: HashMap<u64, u8>,
+    pub taste: Vec<u8>,
 }
 
 impl Person {
-    pub fn empty() -> Person {
+    pub fn empty(objects: usize) -> Person {
         Person {
-            taste: HashMap::new(),
+            taste: vec![0; objects],
         }
     }
 
     pub fn rate(&mut self, object_id: u64, review: u8) {
-        self.taste.insert(object_id, review);
+        self.taste[object_id as usize] = review;
     }
 
-    pub fn get_taste(&self, object_id: u64) -> Option<u8> {
-        if let Some(ans) = self.taste.get(&object_id) {
-            return Some(ans.clone());
-        }
-        None
+    pub fn get_taste(&self, object_id: u64) -> u8 {
+        return self.taste[object_id as usize];
     }
 
-    pub fn simular(&self, person: &Person) -> usize {
-        let mut sum: usize = 0;
-        for (&key, &value) in &self.taste {
-            if let Some(v) = person.taste.get(&key) {
-                sum += abs(value as i32 - v.clone() as i32) as usize;
-            }
+    pub fn simular(&self, person: &Person) -> f32 {
+        let mut up: usize = 0;
+        for i in 0..self.taste.len() {
+            up += (self.taste[i] as usize) * (person.get_taste(i as u64) as usize);
         }
-        sum
+
+        let mut down_1: f32 = 0.0;
+        for i in 0..self.taste.len() {
+            down_1 += ((self.taste[i] as usize) * (self.taste[i] as usize)) as f32;
+        }
+
+        let mut down_2: f32 = 0.0;
+        for i in 0..self.taste.len() {
+            down_2 += ((person.get_taste(i as u64) as usize) * (person.get_taste(i as u64) as usize)) as f32;
+        }
+
+        let down: f32 = (down_1 * down_2).sqrt();
+
+        (up as f32) / down
     }
 }
 

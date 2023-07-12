@@ -106,17 +106,13 @@ impl Logger {
             let mut cur: Vec<CellStruct> = vec![];
             cur.push((id + 1).cell());
             for movie in 0..shows {
-                if let Some(review) = people[id].get_taste(movie as u64) {
-                    cur.push(review.cell());
-                } else {
-                    cur.push((-1).cell());
-                }
+                cur.push(people[id].get_taste(movie as u64).cell());
             }
             table.push(cur);
         }
         // building title
         let mut title: Vec<CellStruct> = vec!["Person".cell()];
-        for i in 1..6 {
+        for i in 1..13 {
             title.push(i.cell());
         }
 
