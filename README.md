@@ -3,5 +3,5 @@ Implementing different recommendation systems.
 
 ## Links
 
-https://mrmineev.github.io/articles/recommendation-system.html
+https://mrmineev.github.io/articles/recommendation-system/recommendation-system
 
